@@ -24,8 +24,8 @@ export default function Home() {
       description:
         "React-based product that is only accessible after logging in and paying, features include a chatbot and a guide.",
       tech: ["React", "Node.js", "MongoDB", "Socket.io"],
-      github: "#",
-      demo: "#",
+      github: "https://github.com/dakaeshop/hustle-guide-dakae",
+      demo: "https://hustle-guide-dakae.vercel.app/",
       image: "/placeholder.svg?height=200&width=300",
     },
     {
@@ -34,7 +34,7 @@ export default function Home() {
       description:
         "Student portfolio website built with Next.js, TypeScript, and Tailwind CSS.",
       tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-      github: "https://github.com/akkified/portfolio",
+      github: "https://github.com/akkified/akhil-portfolio",
       demo: "https://akhilakella.vercel.app/",
       image: "/placeholder.svg?height=200&width=300",
     }
@@ -42,46 +42,36 @@ export default function Home() {
 
   const mobileProjects = [
     {
-      name: "Task Management App",
-      type: "tsx" as const,
+      name: "StudentSparks",
+      type: "java" as const,
       description:
         "React Native mobile app for task management with real-time synchronization, offline support, and collaborative features.",
       tech: ["React Native", "Firebase", "Redux", "Node.js"],
       github: "#",
       demo: "#",
       image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "Fitness Tracker",
-      type: "ts" as const,
-      description:
-        "Cross-platform mobile app for tracking workouts, nutrition, and health metrics with social features.",
-      tech: ["Flutter", "Dart", "Firebase", "SQLite"],
-      github: "#",
-      demo: "#",
-      image: "/placeholder.svg?height=200&width=300",
-    },
+    }
   ]
 
   const dataProjects = [
     {
-      name: "Data Visualization Dashboard",
+      name: "LLM Fine-Tuning on Unsloth",
       type: "py" as const,
       description:
-        "Interactive dashboard for analyzing sales data with charts, filters, and real-time updates using D3.js and Python backend.",
-      tech: ["React", "D3.js", "Python", "FastAPI"],
+        "Learning how to fine tune large language models on open source platform Unsloth",
+      tech: ["Unsloth","Python"],
       github: "#",
       demo: "#",
       image: "/placeholder.svg?height=200&width=300",
     },
     {
-      name: "ML Prediction Model",
+      name: "ML Stroke Prediction Model",
       type: "py" as const,
       description:
-        "Machine learning model for predicting stock prices with web interface for visualization and analysis.",
-      tech: ["Python", "TensorFlow", "Flask", "Pandas"],
-      github: "#",
-      demo: "#",
+        "Machine learning model for predicting stroke types based on MRI scans of the brain.",
+      tech: ["Python", "TensorFlow", "Keras", "Pandas"],
+      github: "https://github.com/akkified/stroke-classification",
+      demo: "https://huggingface.co/spaces/bakhili/stroke-classification",
       image: "/placeholder.svg?height=200&width=300",
     },
   ]
@@ -247,7 +237,7 @@ export default function Home() {
             </Folder>
 
             {/* ETC Folder */}
-            <Folder name="ETC" className="relative">
+            <Folder name="Misc." className="relative">
               <div className="space-y-1 min-w-[200px]">
                 {etcProjects.map((project, index) => (
                   <File

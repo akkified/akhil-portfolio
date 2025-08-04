@@ -1,16 +1,36 @@
-"use client"
+"use client";
 
-import { Github, Linkedin, Mail, Download, Code, Database, Globe, Smartphone } from "lucide-react"
-import { Folder, File } from "@/components/reactbits/Folder"
-import { useState } from "react"
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Download,
+  Code,
+  Database,
+  Globe,
+  Smartphone,
+} from "lucide-react";
+import { Folder, File } from "@/components/reactbits/Folder";
+import { useState } from "react";
+
+// Define a type for project objects to ensure consistency and type safety
+type Project = {
+  name: string;
+  type: "tsx" | "java" | "py" | "ts";
+  description: string;
+  tech: string[];
+  github: string;
+  demo: string;
+  image: string;
+};
 
 export default function Home() {
-  const [selectedProject, setSelectedProject] = useState<any>(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const webProjects = [
+  const webProjects: Project[] = [
     {
       name: "PaperHearts Website",
-      type: "tsx" as const,
+      type: "tsx",
       description:
         "Full-stack web application built with Next.js, TypeScript, and Tailwind CSS. Features user authentication, donations, and a blog.",
       tech: ["Next.js", "TypeScript", "Tailwind CSS", "Givebutter", "Formspree"],
@@ -20,7 +40,7 @@ export default function Home() {
     },
     {
       name: "Dakae LLC Website",
-      type: "tsx" as const,
+      type: "tsx",
       description:
         "React-based product that is only accessible after logging in and paying, features include a chatbot and a guide.",
       tech: ["React", "Node.js", "MongoDB", "Socket.io"],
@@ -30,43 +50,43 @@ export default function Home() {
     },
     {
       name: "Portfolio Website",
-      type: "tsx" as const,
+      type: "tsx",
       description:
         "Student portfolio website built with Next.js, TypeScript, and Tailwind CSS.",
       tech: ["Next.js", "TypeScript", "Tailwind CSS"],
       github: "https://github.com/akkified/akhil-portfolio",
       demo: "https://akhilakella.vercel.app/",
       image: "/placeholder.svg?height=200&width=300",
-    }
-  ]
+    },
+  ];
 
-  const mobileProjects = [
+  const mobileProjects: Project[] = [
     {
       name: "StudentSparks",
-      type: "java" as const,
+      type: "java",
       description:
         "React Native mobile app for task management with real-time synchronization, offline support, and collaborative features.",
       tech: ["React Native", "Firebase", "Redux", "Node.js"],
       github: "#",
       demo: "#",
       image: "/placeholder.svg?height=200&width=300",
-    }
-  ]
+    },
+  ];
 
-  const dataProjects = [
+  const dataProjects: Project[] = [
     {
       name: "LLM Fine-Tuning on Unsloth",
-      type: "py" as const,
+      type: "py",
       description:
         "Learning how to fine tune large language models on open source platform Unsloth",
-      tech: ["Unsloth","Python"],
+      tech: ["Unsloth", "Python"],
       github: "#",
       demo: "#",
       image: "/placeholder.svg?height=200&width=300",
     },
     {
       name: "ML Stroke Prediction Model",
-      type: "py" as const,
+      type: "py",
       description:
         "Machine learning model for predicting stroke types based on MRI scans of the brain.",
       tech: ["Python", "TensorFlow", "Keras", "Pandas"],
@@ -74,65 +94,77 @@ export default function Home() {
       demo: "https://huggingface.co/spaces/bakhili/stroke-classification",
       image: "/placeholder.svg?height=200&width=300",
     },
-  ]
+  ];
 
-  const etcProjects = [
+  const etcProjects: Project[] = [
     {
       name: "Task Management App",
-      type: "tsx" as const,
+      type: "py",
       description:
-        "React Native mobile app for task management with real-time synchronization, offline support, and collaborative features.",
-      tech: ["React Native", "Firebase", "Redux", "Node.js"],
+        "Goggles with AI Vision for the visually impaired. Has image classification and voice detection, with certain keywords.",
+      tech: ["CIFAR-100", "RPi", "Arduino", ""],
       github: "#",
       demo: "#",
       image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "Fitness Tracker",
-      type: "ts" as const,
-      description:
-        "Cross-platform mobile app for tracking workouts, nutrition, and health metrics with social features.",
-      tech: ["Flutter", "Dart", "Firebase", "SQLite"],
-      github: "#",
-      demo: "#",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-  ]
+    }
+  ];
 
   const skills = [
-    { category: "Frontend", icon: Globe, items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
+    {
+      category: "Frontend",
+      icon: Globe,
+      items: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    },
     { category: "Backend", icon: Code, items: ["Python", "Java"] },
-    { category: "Mobile", icon: Smartphone, items: ["Flutter", "iOS", "Android"] },
-    { category: "AI/ML", icon: Database, items: ["TensorFlow", "Keras"] }
-  ]
+    {
+      category: "Mobile",
+      icon: Smartphone,
+      items: ["Flutter", "iOS", "Android"],
+    },
+    { category: "AI/ML", icon: Database, items: ["TensorFlow", "Keras"] },
+  ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <section
+        id="home"
+        className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
+      >
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <img
               src="pfp.png"
-              alt="Akhil Akella"
+              alt="Akhil Akella's profile picture"
               className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-purple-500 shadow-lg"
             />
             <h1 className="text-4xl sm:text-6xl font-bold mb-4">
               Hi, <span className="gradient-text">I'm Akhil</span>
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 mb-6">Computer Science Student & Full-Stack Developer</p>
+            <p className="text-xl sm:text-2xl text-gray-300 mb-6">
+              Computer Science Student & Full-Stack Developer
+            </p>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
-              Passionate about creating innovative solutions and learning cutting-edge technologies. 
+              Passionate about creating innovative solutions and learning
+              cutting-edge technologies.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2">
+            <a
+              href="resume.pdf" // Change this to your resume's path
+              download="Akhil_Akella_Resume.pdf"
+              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2"
+            >
               <Download size={20} />
               <span>Download Resume</span>
-            </button>
+            </a>
             <button
-              onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() =>
+                document
+                  .querySelector("#contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
               className="border border-purple-600 text-purple-400 hover:bg-purple-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-200"
             >
               Get In Touch
@@ -140,13 +172,29 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center space-x-6">
-            <a href="https://github.com/akkified" className="text-gray-400 hover:text-white transition-colors duration-200" target="_blank">
+            <a
+              href="https://github.com/akkified"
+              aria-label="GitHub profile"
+              className="text-gray-400 hover:text-white transition-colors duration-200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Github size={24} />
             </a>
-            <a href="https://www.linkedin.com/in/akhil-akella-149215331/" className="text-gray-400 hover:text-white transition-colors duration-200" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/akhil-akella-149215331/"
+              aria-label="LinkedIn profile"
+              className="text-gray-400 hover:text-white transition-colors duration-200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Linkedin size={24} />
             </a>
-            <a href="mailto:akki.akella@gmail.com" className="text-gray-400 hover:text-white transition-colors duration-200">
+            <a
+              href="mailto:akki.akella@gmail.com"
+              aria-label="Send an email"
+              className="text-gray-400 hover:text-white transition-colors duration-200"
+            >
               <Mail size={24} />
             </a>
           </div>
@@ -156,15 +204,20 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="section-padding bg-gray-800/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">About Me</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+            About Me
+          </h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-lg text-gray-300 mb-6">
-                I'm a sophomore at the Alliance Academy of Innovation with a passion for full-stack development and
-                emerging technologies. I love solving complex problems and turning ideas into reality through code.
+                I'm a sophomore at the Alliance Academy of Innovation with a
+                passion for full-stack development and emerging technologies. I
+                love solving complex problems and turning ideas into reality
+                through code.
               </p>
               <p className="text-lg text-gray-300 mb-6">
-                When I'm not coding, you can find me exploring the latest trends in web development and AI.
+                When I'm not coding, you can find me exploring the latest trends
+                in web development and AI.
               </p>
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div className="bg-gray-700 p-4 rounded-lg">
@@ -180,7 +233,7 @@ export default function Home() {
             <div className="relative">
               <img
                 src="/placeholder.svg?height=400&width=400"
-                alt="Coding workspace"
+                alt="A coding workspace"
                 className="rounded-lg shadow-lg"
               />
             </div>
@@ -191,15 +244,17 @@ export default function Home() {
       {/* Projects Section with ReactBits Folders */}
       <section id="projects" className="section-padding">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">My Projects</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+            My Projects
+          </h2>
 
           <div className="flex justify-center items-start space-x-16 mb-12">
             {/* Web Apps Folder */}
             <Folder name="Web Apps" className="relative">
               <div className="space-y-1 min-w-[200px]">
-                {webProjects.map((project, index) => (
+                {webProjects.map((project) => (
                   <File
-                    key={index}
+                    key={project.name}
                     name={project.name}
                     type={project.type}
                     onClick={() => setSelectedProject(project)}
@@ -211,9 +266,9 @@ export default function Home() {
             {/* Mobile Apps Folder */}
             <Folder name="Mobile Apps" className="relative">
               <div className="space-y-1 min-w-[200px]">
-                {mobileProjects.map((project, index) => (
+                {mobileProjects.map((project) => (
                   <File
-                    key={index}
+                    key={project.name}
                     name={project.name}
                     type={project.type}
                     onClick={() => setSelectedProject(project)}
@@ -225,9 +280,9 @@ export default function Home() {
             {/* Data & ML Folder */}
             <Folder name="Data & ML" className="relative">
               <div className="space-y-1 min-w-[200px]">
-                {dataProjects.map((project, index) => (
+                {dataProjects.map((project) => (
                   <File
-                    key={index}
+                    key={project.name}
                     name={project.name}
                     type={project.type}
                     onClick={() => setSelectedProject(project)}
@@ -239,9 +294,9 @@ export default function Home() {
             {/* ETC Folder */}
             <Folder name="Misc." className="relative">
               <div className="space-y-1 min-w-[200px]">
-                {etcProjects.map((project, index) => (
+                {etcProjects.map((project) => (
                   <File
-                    key={index}
+                    key={project.name}
                     name={project.name}
                     type={project.type}
                     onClick={() => setSelectedProject(project)}
@@ -257,11 +312,18 @@ export default function Home() {
               <div className="bg-gray-800 rounded-lg p-8 shadow-xl border border-gray-700">
                 <div className="grid md:grid-cols-2 gap-8 items-center">
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-4">{selectedProject.name}</h3>
-                    <p className="text-gray-300 mb-6">{selectedProject.description}</p>
+                    <h3 className="text-2xl font-bold text-white mb-4">
+                      {selectedProject.name}
+                    </h3>
+                    <p className="text-gray-300 mb-6">
+                      {selectedProject.description}
+                    </p>
                     <div className="flex flex-wrap gap-2 mb-6">
                       {selectedProject.tech.map((tech: string, index: number) => (
-                        <span key={index} className="bg-purple-600/20 text-purple-300 px-3 py-1 rounded-full text-sm">
+                        <span
+                          key={index}
+                          className="bg-purple-600/20 text-purple-300 px-3 py-1 rounded-full text-sm"
+                        >
                           {tech}
                         </span>
                       ))}
@@ -270,6 +332,8 @@ export default function Home() {
                       <a
                         href={selectedProject.github}
                         className="flex items-center space-x-2 bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors duration-200"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <Github size={18} />
                         <span>View Code</span>
@@ -277,6 +341,8 @@ export default function Home() {
                       <a
                         href={selectedProject.demo}
                         className="flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors duration-200"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <Globe size={18} />
                         <span>Live Demo</span>
@@ -286,7 +352,7 @@ export default function Home() {
                   <div>
                     <img
                       src={selectedProject.image || "/placeholder.svg"}
-                      alt={selectedProject.name}
+                      alt={`Screenshot of the ${selectedProject.name} project`}
                       className="w-full h-64 object-cover rounded-lg shadow-lg"
                     />
                   </div>
@@ -300,23 +366,33 @@ export default function Home() {
       {/* Skills Section */}
       <section id="skills" className="section-padding bg-gray-800/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">Skills & Technologies</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
+            Skills & Technologies
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {skills.map((skillGroup, index) => {
-              const IconComponent = skillGroup.icon
+            {skills.map((skillGroup) => {
+              const IconComponent = skillGroup.icon;
               return (
-                <div key={index} className="bg-gray-800 p-6 rounded-lg text-center card-hover">
-                  <IconComponent size={48} className="mx-auto mb-4 text-purple-400" />
-                  <h3 className="text-xl font-bold mb-4">{skillGroup.category}</h3>
+                <div
+                  key={skillGroup.category}
+                  className="bg-gray-800 p-6 rounded-lg text-center card-hover"
+                >
+                  <IconComponent
+                    size={48}
+                    className="mx-auto mb-4 text-purple-400"
+                  />
+                  <h3 className="text-xl font-bold mb-4">
+                    {skillGroup.category}
+                  </h3>
                   <ul className="space-y-2">
-                    {skillGroup.items.map((skill, skillIndex) => (
-                      <li key={skillIndex} className="text-gray-300">
+                    {skillGroup.items.map((skill) => (
+                      <li key={skill} className="text-gray-300">
                         {skill}
                       </li>
                     ))}
                   </ul>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
@@ -325,9 +401,12 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="section-padding">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8">Get In Touch</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8">
+            Get In Touch
+          </h2>
           <p className="text-lg text-gray-300 mb-8">
-            I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!
+            I'm always open to discussing new opportunities, collaborations, or
+            just having a chat about technology!
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <a
@@ -338,10 +417,22 @@ export default function Home() {
               <span>Send Email</span>
             </a>
             <div className="flex space-x-6">
-              <a href="https://github.com/akkified" className="text-gray-400 hover:text-white transition-colors duration-200" target="_blank">
+              <a
+                href="https://github.com/akkified"
+                aria-label="GitHub profile"
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Github size={32} />
               </a>
-              <a href="https://www.linkedin.com/in/akhil-akella-149215331/" className="text-gray-400 hover:text-white transition-colors duration-200" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/akhil-akella-149215331/"
+                aria-label="LinkedIn profile"
+                className="text-gray-400 hover:text-white transition-colors duration-200"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Linkedin size={32} />
               </a>
             </div>
@@ -446,9 +537,11 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-400">© 2024 Akhil Akella. Built with Next.js and Tailwind CSS.</p>
+          <p className="text-gray-400">
+            © 2024 Akhil Akella. Built with Next.js and Tailwind CSS.
+          </p>
         </div>
       </footer>
     </div>
-  )
+  );
 }

@@ -64,7 +64,10 @@ export default function Taskbar() {
                     <LayoutGrid size={24} />
                 </button>
 
-                <div className="hidden sm:flex items-center bg-gray-800/50 rounded-full px-3 py-1.5 border border-gray-700/50 w-48">
+                <div
+                    className="hidden sm:flex items-center bg-gray-800/50 rounded-full px-3 py-1.5 border border-gray-700/50 w-48 cursor-pointer hover:bg-gray-700/50 transition-colors"
+                    onClick={toggleStart}
+                >
                     <Search size={14} className="text-gray-400 mr-2" />
                     <span className="text-xs text-gray-400">Search...</span>
                 </div>

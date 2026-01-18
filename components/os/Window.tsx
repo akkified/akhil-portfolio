@@ -5,6 +5,8 @@ import { motion, useDragControls } from "framer-motion";
 import { X, Minus, Square, Maximize2 } from "lucide-react";
 import { useWindow } from "./WindowContext";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+
 interface WindowProps {
     id: string;
     title: string;
@@ -15,6 +17,7 @@ export default function Window({ id, title, children }: WindowProps) {
     const { windows, closeWindow, minimizeWindow, maximizeWindow, focusWindow } = useWindow();
     const windowState = windows.find((w) => w.id === id);
     const scrollableRef = useRef<HTMLDivElement>(null);
+    const isMobile = useMediaQuery("(max-width: 768px)");
 
     // Focus window on click
     const handleFocus = () => {
@@ -25,7 +28,7 @@ export default function Window({ id, title, children }: WindowProps) {
         return null;
     }
 
-    const isMaximized = windowState.isMaximized;
+    const isMaximized = windowState.isMaximized || isMobile;
 
     return (
         <motion.div
@@ -62,7 +65,7 @@ export default function Window({ id, title, children }: WindowProps) {
             {/* Title Bar */}
             <div
                 className="h-10 bg-gray-800 border-b border-gray-700 flex items-center justify-between px-4 select-none cursor-default"
-                onDoubleClick={() => maximizeWindow(id)}
+                onDoubleClick={() => !isMobile && maximizeWindow(id)}
             >
                 <div className="flex items-center space-x-2">
                     {/* Draggable handle for non-maximized windows */}
@@ -82,15 +85,17 @@ export default function Window({ id, title, children }: WindowProps) {
                     >
                         <Minus size={14} />
                     </button>
-                    <button
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            maximizeWindow(id);
-                        }}
-                        className="p-1.5 hover:bg-gray-700 rounded-md text-gray-400 hover:text-white transition-colors"
-                    >
-                        {isMaximized ? <Maximize2 size={12} /> : <Square size={12} />}
-                    </button>
+                    {!isMobile && (
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                maximizeWindow(id);
+                            }}
+                            className="p-1.5 hover:bg-gray-700 rounded-md text-gray-400 hover:text-white transition-colors"
+                        >
+                            {isMaximized ? <Maximize2 size={12} /> : <Square size={12} />}
+                        </button>
+                    )}
                     <button
                         onClick={(e) => {
                             e.stopPropagation();

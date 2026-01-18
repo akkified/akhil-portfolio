@@ -44,7 +44,7 @@ export default function Desktop({ children }: DesktopProps) {
             <div className="absolute inset-0 bg-black/20 backdrop-blur-[0px]"></div>
 
             {/* Desktop Icons Area */}
-            <div className="relative z-10 w-full h-[calc(100vh-48px)] p-4 grid grid-flow-col grid-rows-[repeat(auto-fill,100px)] gap-4 content-start items-start justify-start">
+            <div className="relative z-10 w-full h-[calc(100vh-48px)] p-4 grid gap-4 content-start items-start justify-start grid-cols-3 grid-flow-row overflow-y-auto md:grid-flow-col md:grid-rows-[repeat(auto-fill,100px)] md:overflow-visible">
                 {children}
             </div>
 

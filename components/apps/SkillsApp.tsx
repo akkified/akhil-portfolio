@@ -27,7 +27,7 @@ export default function SkillsApp() {
             category: "AI/ML",
             icon: Cpu,
             color: "text-rose-400",
-            items: ["TensorFlow", "Keras", "PyTorch", "Unsloth", "OpenAI API"]
+            items: ["TensorFlow", "Keras", "PyTorch", "Unsloth", "OpenAI API", "LoRA", "QLoRA", "OpenCV", "RLVR", "NumPy", "CNNs", "PID"]
         },
     ];
 

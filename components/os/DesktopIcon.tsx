@@ -26,7 +26,7 @@ export default function DesktopIcon({
 
     return (
         <button
-            onDoubleClick={handleDoubleClick}
+            onClick={handleDoubleClick}
             className="flex flex-col items-center gap-2 p-2 rounded-lg hover:bg-white/10 transition-colors group w-24 text-center cursor-pointer focus:outline-none focus:bg-white/20"
         >
             <div className={`w-14 h-14 bg-gradient-to-br ${bgGradient} rounded-xl shadow-lg flex items-center justify-center group-hover:scale-105 transition-transform border border-white/10`}>

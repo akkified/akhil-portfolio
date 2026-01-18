@@ -1,72 +1,76 @@
 "use client";
 
 import React from "react";
-import { Code, Globe, Database, Smartphone, Terminal, Cpu } from "lucide-react";
 
 export default function SkillsApp() {
     const skills = [
         {
             category: "Frontend",
-            icon: Globe,
-            color: "text-cyan-400",
-            items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+            items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
         },
         {
             category: "Backend",
-            icon: Terminal,
-            color: "text-green-400",
             items: ["Python", "Java", "Node.js", "PostgreSQL", "MongoDB"]
         },
         {
             category: "Mobile",
-            icon: Smartphone,
-            color: "text-purple-400",
-            items: ["Flutter", "iOS (Swift)", "Android (Kotlin)", "React Native"],
+            items: ["Flutter", "iOS (Swift)", "Android (Kotlin)", "React Native"]
         },
         {
             category: "AI/ML",
-            icon: Cpu,
-            color: "text-rose-400",
             items: ["TensorFlow", "Keras", "PyTorch", "Unsloth", "OpenAI API", "LoRA", "QLoRA", "OpenCV", "RLVR", "NumPy", "CNNs", "PID"]
         },
     ];
 
     return (
-        <div className="p-6 h-full bg-gray-900 overflow-y-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {skills.map((skillGroup, idx) => {
-                    const Icon = skillGroup.icon;
+        <div className="h-full bg-slate-950 text-green-400 font-mono p-6 overflow-y-auto custom-scrollbar selection:bg-green-500/30 selection:text-green-100">
+            <div className="max-w-3xl">
+                {/* Header */}
+                <div className="mb-6">
+                    <p className="text-slate-500 mb-2">Last login: {new Date().toDateString()} on ttys001</p>
+                    <p>
+                        <span className="text-blue-400 font-bold">user@akhil-portfolio</span>
+                        <span className="text-slate-400">:</span>
+                        <span className="text-purple-400 font-bold">~/skills</span>
+                        <span className="text-slate-400">$</span> ./display_skills.sh --verbose
+                    </p>
+                    <p className="text-slate-400 mt-2 italic">&#62;&#62; Initializing skill matrix...</p>
+                    <p className="text-slate-400 italic">&#62;&#62; Loading modules...</p>
+                    <p className="text-green-500 font-bold mt-2">ACCESS GRANTED.</p>
+                </div>
 
-                    return (
-                        <div key={idx} className="bg-gray-800 border border-gray-700 rounded-xl p-5 hover:bg-gray-750 transition-colors group">
-                            <div className="flex items-center space-x-3 mb-4">
-                                <div className={`p-2 rounded-lg bg-gray-700/50 group-hover:bg-gray-700 transition-colors ${skillGroup.color}`}>
-                                    <Icon size={24} />
-                                </div>
-                                <h3 className="text-lg font-bold text-gray-100">{skillGroup.category}</h3>
-                            </div>
-
-                            <div className="flex flex-wrap gap-2">
-                                {skillGroup.items.map(item => (
-                                    <span key={item} className="px-2.5 py-1 bg-gray-900 border border-gray-700 rounded-md text-sm text-gray-300">
-                                        {item}
-                                    </span>
+                {/* Skills Output */}
+                <div className="grid gap-8 my-8">
+                    {skills.map((group, idx) => (
+                        <div key={idx} className="relative">
+                            <h3 className="text-yellow-400 font-bold mb-3 border-b border-gray-800 pb-1 inline-block">
+                                [{group.category}]
+                            </h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pl-4 border-l-2 border-slate-800">
+                                {group.items.map((item, i) => (
+                                    <div key={i} className="flex items-center gap-2 group cursor-default hover:text-green-300 transition-colors">
+                                        <span className="text-slate-600 opacity-50 group-hover:text-green-500 group-hover:opacity-100 transition-all">➜</span>
+                                        <span>{item}</span>
+                                    </div>
                                 ))}
                             </div>
                         </div>
-                    )
-                })}
-            </div>
+                    ))}
+                </div>
 
-            {/* Terminal Style Decoration */}
-            <div className="mt-8 p-4 bg-black rounded-lg font-mono text-sm text-green-400 border border-gray-800">
-                <p className="typing-effect">
-                    <span className="text-blue-400">user@akhil-os</span>:<span className="text-purple-400">~</span>$ echo "Learning never stops..."
-                </p>
-                <p className="mt-2 text-gray-500">Learning never stops...</p>
-                <p className="mt-1">
-                    <span className="text-blue-400">user@akhil-os</span>:<span className="text-purple-400">~</span>$ <span className="animate-pulse">_</span>
-                </p>
+                {/* Footer Prompt */}
+                <div className="mt-8 pt-4 border-t border-slate-800">
+                    <p className="mb-2 text-slate-500">
+                        Total Modules Loaded: {skills.reduce((acc, curr) => acc + curr.items.length, 0)}
+                    </p>
+                    <div className="flex items-center gap-2 animate-pulse">
+                        <span className="text-blue-400 font-bold">user@akhil-portfolio</span>
+                        <span className="text-slate-400">:</span>
+                        <span className="text-purple-400 font-bold">~/skills</span>
+                        <span className="text-slate-400">$</span>
+                        <span className="w-3 h-5 bg-green-500 block"></span>
+                    </div>
+                </div>
             </div>
         </div>
     );

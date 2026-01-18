@@ -8,7 +8,8 @@ import AboutApp from "@/components/apps/AboutApp";
 import ProjectsApp from "@/components/apps/ProjectsApp";
 import SkillsApp from "@/components/apps/SkillsApp";
 import ContactApp from "@/components/apps/ContactApp";
-import { UserCircle, FolderOpen, Terminal, Mail, Github } from "lucide-react";
+import VolunteeringApp from "@/components/apps/VolunteeringApp";
+import { UserCircle, FolderOpen, Terminal, Mail, Github, Users, HandHeart } from "lucide-react";
 
 export default function Home() {
   return (
@@ -49,6 +50,15 @@ export default function Home() {
             icon={Mail}
             component={<ContactApp />}
             bgGradient="from-blue-500 to-blue-600"
+          />
+
+          {/* Volunteering -> "Community" */}
+          <DesktopIcon
+            id="volunteering"
+            title="Volunteering"
+            icon={HandHeart}
+            component={<VolunteeringApp />}
+            bgGradient="from-indigo-500 to-violet-600"
           />
 
           {/* GitHub -> External Link */}

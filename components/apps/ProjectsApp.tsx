@@ -16,7 +16,8 @@ import {
     Glasses,
     Search,
     LayoutGrid,
-    List
+    List,
+    Globe
 } from "lucide-react";
 
 type Project = {
@@ -29,6 +30,7 @@ type Project = {
     image: string;
     icon: React.ElementType;
     gradient: string;
+    impact: string;
 };
 
 // Project Data with specific icons and gradients
@@ -42,7 +44,8 @@ const webProjects: Project[] = [
         demo: "https://paperhearts-azure.vercel.app/",
         image: "/placeholder.svg",
         icon: Heart,
-        gradient: "from-pink-500 to-rose-500"
+        gradient: "from-pink-500 to-rose-500",
+        impact: "Facilitates seamless emotional and financial support for content creators, fostering a kinder online community."
     },
     {
         name: "Dakae LLC",
@@ -53,7 +56,8 @@ const webProjects: Project[] = [
         demo: "https://hustle-guide-dakae.vercel.app/",
         image: "/placeholder.svg",
         icon: ShoppingBag,
-        gradient: "from-orange-400 to-amber-500"
+        gradient: "from-orange-400 to-amber-500",
+        impact: "Empowers entrepreneurs with exclusive resources and real-time support to accelerate their business growth."
     },
     {
         name: "Portfolio V2",
@@ -64,7 +68,8 @@ const webProjects: Project[] = [
         demo: "https://akhilakella.vercel.app/",
         image: "/placeholder.svg",
         icon: Terminal,
-        gradient: "from-blue-500 to-cyan-500"
+        gradient: "from-blue-500 to-cyan-500",
+        impact: "Provides a unique, interactive experience that redefines how personal portfolios can engage and inform visitors."
     },
 ];
 
@@ -78,7 +83,8 @@ const mobileProjects: Project[] = [
         demo: "#",
         image: "/placeholder.svg",
         icon: Zap,
-        gradient: "from-yellow-400 to-orange-500"
+        gradient: "from-yellow-400 to-orange-500",
+        impact: "Boosts student productivity and teamwork by streamlining task management and real-time collaboration."
     },
 ];
 
@@ -92,7 +98,8 @@ const dataProjects: Project[] = [
         demo: "#",
         image: "/placeholder.svg",
         icon: Brain,
-        gradient: "from-violet-500 to-purple-500"
+        gradient: "from-violet-500 to-purple-500",
+        impact: "Advances the accessibility and efficiency of AI models, making powerful language processing tools more available."
     },
     {
         name: "Stroke Prediction",
@@ -103,7 +110,8 @@ const dataProjects: Project[] = [
         demo: "https://huggingface.co/spaces/bakhili/stroke-classification",
         image: "/placeholder.svg",
         icon: Activity,
-        gradient: "from-red-500 to-pink-600"
+        gradient: "from-red-500 to-pink-600",
+        impact: "Aids in early diagnosis and prevention of strokes, potentially saving lives through timely medical intervention."
     },
 ];
 
@@ -117,7 +125,8 @@ const etcProjects: Project[] = [
         demo: "#",
         image: "/placeholder.svg",
         icon: Glasses,
-        gradient: "from-gray-600 to-gray-800"
+        gradient: "from-gray-600 to-gray-800",
+        impact: "Enhances independence and safety for the visually impaired by providing real-time auditory feedback on their surroundings."
     }
 ];
 
@@ -267,6 +276,16 @@ export default function ProjectsApp() {
                                         <p className="text-gray-400 leading-relaxed text-sm">
                                             {selectedProject.description}
                                         </p>
+
+                                        <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4 mt-6">
+                                            <h4 className="text-blue-400 font-semibold mb-1 flex items-center space-x-2">
+                                                <Globe size={16} />
+                                                <span>Impact on Society</span>
+                                            </h4>
+                                            <p className="text-gray-300 text-sm italic">
+                                                "{selectedProject.impact}"
+                                            </p>
+                                        </div>
                                     </div>
 
                                     {/* Mock Code Snippet */}

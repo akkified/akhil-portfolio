@@ -1,547 +1,73 @@
 "use client";
 
-import {
-  Github,
-  Linkedin,
-  Mail,
-  Download,
-  Code,
-  Database,
-  Globe,
-  Smartphone,
-} from "lucide-react";
-import { Folder, File } from "@/components/reactbits/Folder";
-import { useState } from "react";
-
-// Define a type for project objects to ensure consistency and type safety
-type Project = {
-  name: string;
-  type: "tsx" | "java" | "py" | "ts";
-  description: string;
-  tech: string[];
-  github: string;
-  demo: string;
-  image: string;
-};
+import React from "react";
+import { WindowProvider } from "@/components/os/WindowContext";
+import Desktop from "@/components/os/Desktop";
+import DesktopIcon from "@/components/os/DesktopIcon";
+import AboutApp from "@/components/apps/AboutApp";
+import ProjectsApp from "@/components/apps/ProjectsApp";
+import SkillsApp from "@/components/apps/SkillsApp";
+import ContactApp from "@/components/apps/ContactApp";
+import { UserCircle, FolderOpen, Terminal, Mail, Github } from "lucide-react";
 
 export default function Home() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  const webProjects: Project[] = [
-    {
-      name: "PaperHearts Website",
-      type: "tsx",
-      description:
-        "Full-stack web application built with Next.js, TypeScript, and Tailwind CSS. Features user authentication, donations, and a blog.",
-      tech: ["Next.js", "TypeScript", "Tailwind CSS", "Givebutter", "Formspree"],
-      github: "https://github.com/akkified/paperhearts",
-      demo: "https://paperhearts-azure.vercel.app/",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "Dakae LLC Website",
-      type: "tsx",
-      description:
-        "React-based product that is only accessible after logging in and paying, features include a chatbot and a guide.",
-      tech: ["React", "Node.js", "MongoDB", "Socket.io"],
-      github: "https://github.com/dakaeshop/hustle-guide-dakae",
-      demo: "https://hustle-guide-dakae.vercel.app/",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "Portfolio Website",
-      type: "tsx",
-      description:
-        "Student portfolio website built with Next.js, TypeScript, and Tailwind CSS.",
-      tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-      github: "https://github.com/akkified/akhil-portfolio",
-      demo: "https://akhilakella.vercel.app/",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-  ];
-
-  const mobileProjects: Project[] = [
-    {
-      name: "StudentSparks",
-      type: "java",
-      description:
-        "React Native mobile app for task management with real-time synchronization, offline support, and collaborative features.",
-      tech: ["React Native", "Firebase", "Redux", "Node.js"],
-      github: "#",
-      demo: "#",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-  ];
-
-  const dataProjects: Project[] = [
-    {
-      name: "LLM Fine-Tuning on Unsloth",
-      type: "py",
-      description:
-        "Learning how to fine tune large language models on open source platform Unsloth",
-      tech: ["Unsloth", "Python"],
-      github: "#",
-      demo: "#",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      name: "ML Stroke Prediction Model",
-      type: "py",
-      description:
-        "Machine learning model for predicting stroke types based on MRI scans of the brain.",
-      tech: ["Python", "TensorFlow", "Keras", "Pandas"],
-      github: "https://github.com/akkified/stroke-classification",
-      demo: "https://huggingface.co/spaces/bakhili/stroke-classification",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-  ];
-
-  const etcProjects: Project[] = [
-    {
-      name: "Task Management App",
-      type: "py",
-      description:
-        "Goggles with AI Vision for the visually impaired. Has image classification and voice detection, with certain keywords.",
-      tech: ["CIFAR-100", "RPi", "Arduino", ""],
-      github: "#",
-      demo: "#",
-      image: "/placeholder.svg?height=200&width=300",
-    }
-  ];
-
-  const skills = [
-    {
-      category: "Frontend",
-      icon: Globe,
-      items: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    },
-    { category: "Backend", icon: Code, items: ["Python", "Java"] },
-    {
-      category: "Mobile",
-      icon: Smartphone,
-      items: ["Flutter", "iOS", "Android"],
-    },
-    { category: "AI/ML", icon: Database, items: ["TensorFlow", "Keras"] },
-  ];
-
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      {/* Hero Section */}
-      <section
-        id="home"
-        className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <img
-              src="pfp.png"
-              alt="Akhil Akella's profile picture"
-              className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-purple-500 shadow-lg"
-            />
-            <h1 className="text-4xl sm:text-6xl font-bold mb-4">
-              Hi, <span className="gradient-text">I'm Akhil</span>
-            </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 mb-6">
-              Computer Science Student & Full-Stack Developer
-            </p>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
-              Passionate about creating innovative solutions and learning
-              cutting-edge technologies.
-            </p>
-          </div>
+    <WindowProvider>
+      <main className="h-screen w-screen overflow-hidden">
+        <Desktop>
+          {/* About Me -> "User Profile / System Info" */}
+          <DesktopIcon
+            id="about"
+            title="Bio"
+            icon={UserCircle}
+            component={<AboutApp />}
+            bgGradient="from-gray-500 to-gray-700"
+          />
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <a
-              href="resume.pdf" // Change this to your resume's path
-              download="Akhil_Akella_Resume.pdf"
-              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2"
-            >
-              <Download size={20} />
-              <span>Download Resume</span>
-            </a>
-            <button
-              onClick={() =>
-                document
-                  .querySelector("#contact")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="border border-purple-600 text-purple-400 hover:bg-purple-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-all duration-200"
-            >
-              Get In Touch
-            </button>
-          </div>
+          {/* Projects -> "File Explorer" */}
+          <DesktopIcon
+            id="projects"
+            title="Projects"
+            icon={FolderOpen}
+            component={<ProjectsApp />}
+            bgGradient="from-yellow-400 to-yellow-600"
+          />
 
-          <div className="flex justify-center space-x-6">
-            <a
-              href="https://github.com/akkified"
-              aria-label="GitHub profile"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github size={24} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/akhil-akella-149215331/"
-              aria-label="LinkedIn profile"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin size={24} />
-            </a>
-            <a
-              href="mailto:akki.akella@gmail.com"
-              aria-label="Send an email"
-              className="text-gray-400 hover:text-white transition-colors duration-200"
-            >
-              <Mail size={24} />
-            </a>
-          </div>
-        </div>
-      </section>
+          {/* Skills -> "Terminal" */}
+          <DesktopIcon
+            id="skills"
+            title="Skills"
+            icon={Terminal}
+            component={<SkillsApp />}
+            bgGradient="from-gray-800 to-black"
+          />
 
-      {/* About Section */}
-      <section id="about" className="section-padding bg-gray-800/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-            About Me
-          </h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-lg text-gray-300 mb-6">
-                I'm a sophomore at the Alliance Academy of Innovation with a
-                passion for full-stack development and emerging technologies. I
-                love solving complex problems and turning ideas into reality
-                through code.
-              </p>
-              <p className="text-lg text-gray-300 mb-6">
-                When I'm not coding, you can find me exploring the latest trends
-                in web development and AI.
-              </p>
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-2xl font-bold text-purple-400">5+</h3>
-                  <p className="text-gray-300">Projects Completed</p>
-                </div>
-                <div className="bg-gray-700 p-4 rounded-lg">
-                  <h3 className="text-2xl font-bold text-purple-400">4.375</h3>
-                  <p className="text-gray-300">GPA</p>
-                </div>
-              </div>
+          {/* Contact -> "Outlook/Mail" */}
+          <DesktopIcon
+            id="contact"
+            title="Contact"
+            icon={Mail}
+            component={<ContactApp />}
+            bgGradient="from-blue-500 to-blue-600"
+          />
+
+          {/* GitHub -> External Link */}
+          <a
+            href="https://github.com/akkified"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center gap-2 p-2 rounded-lg hover:bg-white/10 transition-colors group w-24 text-center cursor-pointer focus:outline-none focus:bg-white/20"
+          >
+            <div className="w-14 h-14 bg-[#181717] border border-white/10 rounded-xl shadow-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+              <Github size={28} className="text-white" />
             </div>
-            <div className="relative">
-              <img
-                src="/placeholder.svg?height=400&width=400"
-                alt="A coding workspace"
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+            <span className="text-sm font-medium text-white shadow-black drop-shadow-md select-none line-clamp-2 leading-tight">
+              GitHub
+            </span>
+          </a>
 
-      {/* Projects Section with ReactBits Folders */}
-      <section id="projects" className="section-padding">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-            My Projects
-          </h2>
-
-          <div className="flex justify-center items-start space-x-16 mb-12">
-            {/* Web Apps Folder */}
-            <Folder name="Web Apps" className="relative">
-              <div className="space-y-1 min-w-[200px]">
-                {webProjects.map((project) => (
-                  <File
-                    key={project.name}
-                    name={project.name}
-                    type={project.type}
-                    onClick={() => setSelectedProject(project)}
-                  />
-                ))}
-              </div>
-            </Folder>
-
-            {/* Mobile Apps Folder */}
-            <Folder name="Mobile Apps" className="relative">
-              <div className="space-y-1 min-w-[200px]">
-                {mobileProjects.map((project) => (
-                  <File
-                    key={project.name}
-                    name={project.name}
-                    type={project.type}
-                    onClick={() => setSelectedProject(project)}
-                  />
-                ))}
-              </div>
-            </Folder>
-
-            {/* Data & ML Folder */}
-            <Folder name="Data & ML" className="relative">
-              <div className="space-y-1 min-w-[200px]">
-                {dataProjects.map((project) => (
-                  <File
-                    key={project.name}
-                    name={project.name}
-                    type={project.type}
-                    onClick={() => setSelectedProject(project)}
-                  />
-                ))}
-              </div>
-            </Folder>
-
-            {/* ETC Folder */}
-            <Folder name="Misc." className="relative">
-              <div className="space-y-1 min-w-[200px]">
-                {etcProjects.map((project) => (
-                  <File
-                    key={project.name}
-                    name={project.name}
-                    type={project.type}
-                    onClick={() => setSelectedProject(project)}
-                  />
-                ))}
-              </div>
-            </Folder>
-          </div>
-
-          {/* Selected Project Display */}
-          {selectedProject && (
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-gray-800 rounded-lg p-8 shadow-xl border border-gray-700">
-                <div className="grid md:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      {selectedProject.name}
-                    </h3>
-                    <p className="text-gray-300 mb-6">
-                      {selectedProject.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {selectedProject.tech.map((tech: string, index: number) => (
-                        <span
-                          key={index}
-                          className="bg-purple-600/20 text-purple-300 px-3 py-1 rounded-full text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex space-x-4">
-                      <a
-                        href={selectedProject.github}
-                        className="flex items-center space-x-2 bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors duration-200"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Github size={18} />
-                        <span>View Code</span>
-                      </a>
-                      <a
-                        href={selectedProject.demo}
-                        className="flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors duration-200"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Globe size={18} />
-                        <span>Live Demo</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div>
-                    <img
-                      src={selectedProject.image || "/placeholder.svg"}
-                      alt={`Screenshot of the ${selectedProject.name} project`}
-                      className="w-full h-64 object-cover rounded-lg shadow-lg"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="section-padding bg-gray-800/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12">
-            Skills & Technologies
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {skills.map((skillGroup) => {
-              const IconComponent = skillGroup.icon;
-              return (
-                <div
-                  key={skillGroup.category}
-                  className="bg-gray-800 p-6 rounded-lg text-center card-hover"
-                >
-                  <IconComponent
-                    size={48}
-                    className="mx-auto mb-4 text-purple-400"
-                  />
-                  <h3 className="text-xl font-bold mb-4">
-                    {skillGroup.category}
-                  </h3>
-                  <ul className="space-y-2">
-                    {skillGroup.items.map((skill) => (
-                      <li key={skill} className="text-gray-300">
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="section-padding">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8">
-            Get In Touch
-          </h2>
-          <p className="text-lg text-gray-300 mb-8">
-            I'm always open to discussing new opportunities, collaborations, or
-            just having a chat about technology!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a
-              href="mailto:akki.akella@gmail.com"
-              className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 flex items-center space-x-2"
-            >
-              <Mail size={20} />
-              <span>Send Email</span>
-            </a>
-            <div className="flex space-x-6">
-              <a
-                href="https://github.com/akkified"
-                aria-label="GitHub profile"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github size={32} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/akhil-akella-149215331/"
-                aria-label="LinkedIn profile"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin size={32} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Scrolling Skills Bar */}
-      <section className="py-12 bg-gray-900 overflow-hidden">
-        <div className="relative">
-          <div className="flex animate-scroll space-x-8 whitespace-nowrap">
-            {/* First set of skills */}
-            <div className="flex space-x-8 items-center">
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-blue-400" />
-                <span className="text-white font-medium">JavaScript</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-blue-500" />
-                <span className="text-white font-medium">TypeScript</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Globe size={20} className="text-cyan-400" />
-                <span className="text-white font-medium">React</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Globe size={20} className="text-gray-400" />
-                <span className="text-white font-medium">Next.js</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-green-400" />
-                <span className="text-white font-medium">Node.js</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Database size={20} className="text-blue-600" />
-                <span className="text-white font-medium">PostgreSQL</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-yellow-400" />
-                <span className="text-white font-medium">Python</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Globe size={20} className="text-cyan-300" />
-                <span className="text-white font-medium">Tailwind CSS</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Database size={20} className="text-green-500" />
-                <span className="text-white font-medium">MongoDB</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-orange-500" />
-                <span className="text-white font-medium">Java</span>
-              </div>
-            </div>
-            {/* Duplicate set for seamless loop */}
-            <div className="flex space-x-8 items-center">
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-blue-400" />
-                <span className="text-white font-medium">JavaScript</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-blue-500" />
-                <span className="text-white font-medium">TypeScript</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Globe size={20} className="text-cyan-400" />
-                <span className="text-white font-medium">React</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Globe size={20} className="text-gray-400" />
-                <span className="text-white font-medium">Next.js</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-green-400" />
-                <span className="text-white font-medium">Node.js</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Database size={20} className="text-blue-600" />
-                <span className="text-white font-medium">PostgreSQL</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-yellow-400" />
-                <span className="text-white font-medium">Python</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Globe size={20} className="text-cyan-300" />
-                <span className="text-white font-medium">Tailwind CSS</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Database size={20} className="text-green-500" />
-                <span className="text-white font-medium">MongoDB</span>
-              </div>
-              <div className="flex items-center space-x-3 bg-gray-800 px-6 py-3 rounded-full">
-                <Code size={20} className="text-orange-500" />
-                <span className="text-white font-medium">Java</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-400">
-            © 2024 Akhil Akella.
-          </p>
-        </div>
-      </footer>
-    </div>
+        </Desktop>
+      </main>
+    </WindowProvider>
   );
 }

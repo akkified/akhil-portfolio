@@ -13,7 +13,7 @@ export default function SkillsApp() {
         },
         {
             category: "Backend",
-            items: ["Python", "Java", "Node.js", "PostgreSQL", "MongoDB"]
+            items: ["Flask", "Springboot", "Node.js", "PostgreSQL", "MongoDB"]
         },
         {
             category: "Mobile",
@@ -21,7 +21,7 @@ export default function SkillsApp() {
         },
         {
             category: "AI/ML",
-            items: ["TensorFlow", "Keras", "PyTorch", "Unsloth", "OpenAI API", "LoRA", "QLoRA", "OpenCV", "RLVR", "NumPy", "CNNs", "PID"]
+            items: ["TensorFlow", "Keras", "PyTorch", "Unsloth", "LoRA", "QLoRA", "OpenCV", "RLVR", "NumPy", "CNNs"]
         },
     ];
 

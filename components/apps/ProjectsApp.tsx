@@ -71,6 +71,18 @@ const webProjects: Project[] = [
         gradient: "from-blue-500 to-cyan-500",
         impact: "Provides a unique, interactive experience that redefines how personal portfolios can engage and inform visitors."
     },
+    {
+        name: "TSA Chapter Website",
+        type: "Website",
+        description: "Official TSA Chapter website showcasing events and achievements.",
+        tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+        github: "https://github.com/akkified/aaitsa",
+        demo: "https://aaitsa.vercel.app",
+        image: "/placeholder.svg",
+        icon: Globe,
+        gradient: "from-blue-600 to-indigo-700",
+        impact: "Provides a central platform for chapter members to access information and resources effectively."
+    },
 ];
 
 const mobileProjects: Project[] = [
@@ -79,7 +91,7 @@ const mobileProjects: Project[] = [
         type: "Productivity",
         description: "Task management app with real-time sync and collaboration.",
         tech: ["React Native", "Firebase", "Redux"],
-        github: "#",
+        github: "https://github.com/akkified/StudentSparks",
         demo: "#",
         image: "/placeholder.svg",
         icon: Zap,
@@ -94,7 +106,7 @@ const dataProjects: Project[] = [
         type: "AI Research",
         description: "Fine-tuning large language models using Unsloth findings.",
         tech: ["Python", "Unsloth", "PyTorch"],
-        github: "#",
+        github: "https://github.com/akkified/pid-tuning-llm",
         demo: "#",
         image: "/placeholder.svg",
         icon: Brain,
@@ -112,6 +124,42 @@ const dataProjects: Project[] = [
         icon: Activity,
         gradient: "from-red-500 to-pink-600",
         impact: "Aids in early diagnosis and prevention of strokes, potentially saving lives through timely medical intervention."
+    },
+    {
+        name: "TSA Engineering Design",
+        type: "Robotics",
+        description: "A robotic arm for chemistry labs to handle hazardous materials precisely.",
+        tech: ["Raspberry Pi 5", "Arduino", "Python", "C++"],
+        github: "https://github.com/akkified/tsa-engineering-design",
+        demo: "#",
+        image: "/placeholder.svg",
+        icon: Activity,
+        gradient: "from-emerald-500 to-teal-700",
+        impact: "Improves lab safety by automating the handling of hazardous chemicals using precise robotic control."
+    },
+    {
+        name: "AI Day Trader",
+        type: "FinTech",
+        description: "Autonomous trading platform using neural networks to predict market trends.",
+        tech: ["Brain.js", "Next.js", "Node.js"],
+        github: "https://github.com/akkified/ai-day-trader",
+        demo: "https://ai-day-trader.vercel.app/",
+        image: "/placeholder.svg",
+        icon: Brain,
+        gradient: "from-amber-400 to-orange-600",
+        impact: "Democratizes algorithmic trading strategies through accessible neural network implementations."
+    },
+    {
+        name: "NASA DWU Project",
+        type: "Computer Vision",
+        description: "High-altitude pest detection system using AI and computer vision.",
+        tech: ["Python", "TensorFlow", "OpenCV"],
+        github: "https://github.com/akkified/DWU-NASA",
+        demo: "#",
+        image: "/placeholder.svg",
+        icon: Zap,
+        gradient: "from-cyan-500 to-blue-600",
+        impact: "Revolutionizes agricultural monitoring by detecting pests from 30 feet in the air, optimizing crop yields."
     },
 ];
 

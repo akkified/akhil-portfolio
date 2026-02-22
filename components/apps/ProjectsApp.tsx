@@ -114,16 +114,16 @@ const dataProjects: Project[] = [
         impact: "Advances the accessibility and efficiency of AI models, making powerful language processing tools more available."
     },
     {
-        name: "Stroke Prediction",
+        name: "Stroke Classification",
         type: "Healthcare ML",
-        description: "Predicting stroke probability based on MRI scan data.",
-        tech: ["TensorFlow", "Keras", "Pandas"],
+        description: "My first-ever project! 🚀 Developed a machine learning model to predict stroke probability based on clinical data including MRI scan results.",
+        tech: ["Python", "TensorFlow", "Keras", "Pandas", "Scikit-Learn"],
         github: "https://github.com/akkified/stroke-classification",
         demo: "https://huggingface.co/spaces/bakhili/stroke-classification",
         image: "/placeholder.svg",
         icon: Activity,
         gradient: "from-red-500 to-pink-600",
-        impact: "Aids in early diagnosis and prevention of strokes, potentially saving lives through timely medical intervention."
+        impact: "Marked the beginning of my AI journey. This project aids in early diagnosis and prevention of strokes through predictive modeling."
     },
     {
         name: "TSA Engineering Design",

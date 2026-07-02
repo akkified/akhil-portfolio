@@ -10,19 +10,13 @@ import SkillsApp from "@/components/apps/SkillsApp";
 import ContactApp from "@/components/apps/ContactApp";
 import VolunteeringApp from "@/components/apps/VolunteeringApp";
 import { UserCircle, FolderOpen, Terminal, Mail, Github, Users, HandHeart } from "lucide-react";
-import IntroScreen from "@/components/intro/IntroScreen";
 
 export default function Home() {
-  const [showIntro, setShowIntro] = React.useState(true);
-
   return (
     <WindowProvider>
       <main className="h-screen w-screen overflow-hidden">
-        {showIntro ? (
-          <IntroScreen onComplete={() => setShowIntro(false)} />
-        ) : (
-          <div className="absolute inset-0 animate-in fade-in duration-1000">
-            <Desktop>
+        <div className="absolute inset-0">
+          <Desktop>
               {/* About Me -> "User Profile / System Info" */}
               <DesktopIcon
                 id="about"
@@ -83,9 +77,8 @@ export default function Home() {
                 </span>
               </a>
 
-            </Desktop>
-          </div>
-        )}
+          </Desktop>
+        </div>
       </main>
     </WindowProvider>
   );
